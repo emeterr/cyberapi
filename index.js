@@ -4,11 +4,16 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 app.use(cors());
 app.use(bodyParser.json());
-const eateryRoute = require('./src/routes/chatbot')
+const cyberRoute = require('./src/routes/cyberbully');
+
+const { v4: uuidv4 } = require('uuid');
+app.use('/ai', cyberRoute);
 
 
-app.use('/eatery', eateryRoute)
+function Genera() {
+  return uuidv4();
+}
 
-app.listen('3000', ()=>{
-    console.log('EMETERR AI INITIALIZED...')
-})
+app.listen('3000', () => {
+  console.log('EMETERR AI INITIALIZED...');
+});
